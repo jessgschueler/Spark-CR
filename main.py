@@ -25,3 +25,9 @@ spark_df.select(replace(spark_df.genres)).show(10)
 #cast artist_popularity and followers as int
 spark_df = spark_df.withColumn('artist_popularity', spark_df['artist_popularity'].cast(IntegerType()))
 spark_df = spark_df.withColumn('followers', spark_df['followers'].cast(IntegerType()))
+#sort the data in descending order by number of followers
+spark_df.sort('followers', ascending=False).show(20)
+#create udf to divide artist_poularitry by 100
+pop_percent = udf(lambda x: x/100)
+#create 'popularity_percent' column
+spark_df.withColumn('popularity_percent', pop_percent(spark_df['artist_popularity'])).show(10)
