@@ -31,3 +31,8 @@ spark_df.sort('followers', ascending=False).show(20)
 pop_percent = udf(lambda x: x/100)
 #create 'popularity_percent' column
 spark_df.withColumn('popularity_percent', pop_percent(spark_df['artist_popularity'])).show(10)
+
+#extract information
+
+#filter values of 'name' with 'Queen', limit 20
+spark_df.filter("lower(name) LIKE '%queen%'").show(20)
