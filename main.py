@@ -36,3 +36,7 @@ spark_df.withColumn('popularity_percent', pop_percent(spark_df['artist_popularit
 
 #filter values of 'name' with 'Queen', limit 20
 spark_df.filter("lower(name) LIKE '%queen%'").show(20)
+#create table
+spark_df.createOrReplaceTempView("spotify")
+#Group the data by artist popularity, and show the count for each group
+spark.sql('SELECT artist_popularity, count(artist_popularity) as Count FROM spotify GROUP BY artist_popularity').sort('artist_popularity', ascending=False).show()
