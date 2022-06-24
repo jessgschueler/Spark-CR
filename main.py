@@ -40,3 +40,6 @@ spark_df.filter("lower(name) LIKE '%queen%'").show(20)
 spark_df.createOrReplaceTempView("spotify")
 #Group the data by artist popularity, and show the count for each group
 spark.sql('SELECT artist_popularity, count(artist_popularity) as Count FROM spotify GROUP BY artist_popularity').sort('artist_popularity', ascending=False).show()
+
+#write to parquet
+spark_df.write.parquet('data/spotify_artist.parquet')
