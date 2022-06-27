@@ -16,7 +16,7 @@ Using PySpark to profile, clean, and briefly analyze Spofity artists data.
 ## Setup/Installation Requirements
 * In the terminal, clone github repository using the following command;
     ```
-    $ git clone https://github.com/jessgschueler/airflow-orchard
+    $ git clone https://github.com/jessgschueler/Spark-CR
     ```
 * In a venv, Pip install requirements.txt file
 * Create a /data directory and run get_data.sh inside it
